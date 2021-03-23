@@ -10,4 +10,5 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Next](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [SASS](https://sass-lang.com/)
-- [Stripe](https://stripe.com/docs)
+- [Stripe](https://stripe.com/)
+- [FaunaDB](https://fauna.com/)
