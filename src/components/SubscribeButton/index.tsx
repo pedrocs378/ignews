@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { Session } from 'next-auth'
 import { useSession, signIn } from 'next-auth/client'
 
 import { getStripeJs } from '../../services/stripe-js'
@@ -6,8 +7,17 @@ import { api } from '../../services/api'
 
 import styles from './styles.module.scss'
 
+interface SessionProps extends Session {
+	activeSubscription?: string
+}
+
+type UseSessionProps = [
+	SessionProps,
+	boolean
+]
+
 export function SubscribeButton() {
-	const [session] = useSession()
+	const [session] = useSession() as UseSessionProps
 	const router = useRouter()
 
 	async function handleSubscribe() {
@@ -17,7 +27,7 @@ export function SubscribeButton() {
 			return
 		}
 
-		if (session?.activeSubscription) {
+		if (session.activeSubscription) {
 			router.push('/posts')
 
 			return
